@@ -1,0 +1,66 @@
+[
+    {
+    "id": 1,
+    "nombre": "Avena",
+    "precio": 1090,
+    "categoria": "Granos",
+    "imagen": "almendra-con-chocolate.jpg",
+    "stock": 5
+    },
+    {
+    "id": 2,
+    "nombre": "Almendra con chocolate",
+    "precio": 1250,
+    "categoria": "Frutos secos",
+    "imagen": "almendra.jpg",
+    "stock": 5
+    },
+    {
+    "id": 3,
+    "nombre": "Barrita proteica",
+    "precio": 680,
+    "categoria": "Granos",
+    "imagen": "barrita-proteica.jpg",
+    "stock": 5
+    },
+    {
+    "id": 4,
+    "nombre": "Castaña de caju",
+    "precio": 1100,
+    "categoria": "Frutos secos",
+    "imagen": "castañas.jpg",
+    "stock": 5
+    },        
+    {
+    "id": 5,
+    "nombre": "Mermelada La Tranquilina",
+    "precio": 1350,
+    "categoria": "Granos",
+    "imagen": "la_tranquilina.webp",
+    "stock": 5
+    },       
+        {
+    "id": 6,
+    "nombre": "Fideos integrales",
+    "precio": 780,
+    "categoria": "Pastas",
+    "imagen": "fideos integrales.jpg",
+    "stock": 5
+    },       
+            {
+    "id": 7,
+    "nombre": "Pasta de mani",
+    "precio": 1800,
+    "categoria": "Granos",
+    "imagen": "mani_king.webp",
+    "stock": 5
+    },           
+    {
+    "id": 8,
+    "nombre": "Pasa negra",
+    "precio": 280,
+    "categoria": "Frutos secos",
+    "imagen": "pasa-negra.jpg",
+    "stock": 5
+    }       
+]

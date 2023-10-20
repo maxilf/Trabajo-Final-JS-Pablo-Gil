@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="stylo.css" />
+  </head>
+  <header>
+        <div class="logo" >
+            <img src="./img/fotor_2023-6-11_12_23_36 (2).ico" alt="Logo de la dietetica">
+        </div>
+  </header>
+  <body>
+    <!-- Productos -->
+    <main>
+        
+        <input id="inputBuscar" type="text" placeholder="Buscar productos..." />
+        <ul>
+          <li class="boton categorias" data-categorias="Granos">Granos</li>
+          <li class="boton categorias" data-categorias="Pastas">Pastas</li>
+          <li class="boton categorias" data-categorias="Frutos secos">Frutos secos</li>
+          <li class="boton categorias seleccionado" data-categorias="Todos">Todos</li>
+        </ul>
+        <div id="productos">
+        <!-- Acá van a ir todos los productos cargados en la base de datos (catálogo) -->
+        </div>
+    </main>
+
+    <section class="ocultar">
+      <h1>
+        <i class="bi bi-cart-fill"></i><!-- Icono de carrito -->
+        <span id="cantidadProductos">0</span>
+      </h1>
+      <div id="scroll">
+        <div id="carrito">
+          <!-- Acá van a estar todos los productos que tengamos en el carrito -->
+        </div>
+      </div >
+      <h2>Total: $<span id="totalCarrito">0</span></h2>
+      <a href="#" id="botonComprar" class="boton" style="width: 100%; text-align: center">Comprar</a>
+    </section>
+    <script src="carrito.js"></script>
+  </body>
+</html>
