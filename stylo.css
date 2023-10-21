@@ -34,6 +34,15 @@
     margin-bottom: 20px;
   }
 
+  .dropdown{
+    margin-bottom: 10px;
+  }
+
+  .btn{
+    background-color: #e2b042;
+    color: black;
+  }
+
   section {
     position: fixed;
     box-shadow: -6px -2px 25px -13px rgba(0, 0, 0, 0.15);

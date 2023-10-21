@@ -3,7 +3,7 @@
     "id": 1,
     "nombre": "Avena",
     "precio": 1090,
-    "categoria": "Cereal",
+    "categoria": "Cereales",
     "imagen": "avena.jpg",
     "stock": 5
     },

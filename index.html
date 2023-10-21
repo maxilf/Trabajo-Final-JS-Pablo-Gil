@@ -25,13 +25,27 @@
     <!-- Productos -->
     <main>
         <input id="inputBuscar" type="text" placeholder="Buscar productos..." />
-        <ul>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categorias
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item categorias seleccionado"  data-categoria="Todos" href="#">Todos</a></li>
+            <li><a class="dropdown-item categorias" data-categoria="Cereales" href="#">Cereales</a></li>
+            <li><a class="dropdown-item categorias" data-categoria="Pastas" href="#">Pastas</a></li>
+            <li><a class="dropdown-item categorias" data-categoria="Frutos secos" href="#">Frutos secos</a></li>
+            <li><a class="dropdown-item categorias" data-categoria="Otros" href="#">Otros</a></li>
+          </ul>
+        </div>
+
+        <!-- <ul>
           <li class="boton categorias seleccionado" data-categoria="Todos">Todos</li>
           <li class="boton categorias" data-categoria="Granos">Cereal</li>
           <li class="boton categorias" data-categoria="Pastas">Pastas</li>
           <li class="boton categorias" data-categoria="Frutos secos">Frutos secos</li>
           <li class="boton categorias" data-categoria="Otros">Otros</li>
-        </ul>
+        </ul> -->
         <div id="productos">
         <!-- Acá van a ir todos los productos cargados en la base de datos (catálogo) -->
         </div>

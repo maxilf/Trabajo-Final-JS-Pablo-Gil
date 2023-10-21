@@ -268,7 +268,7 @@ class Producto {
     swalWithBootstrapButtons.fire({
       title: '¿Desea confirmar la compra?',
       text: "Mira que no hay vuelta atras!",
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'No confirmar',
@@ -277,17 +277,18 @@ class Producto {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
           'Confirmada!',
-          'Su compra esta en camino!.',
+          'Su compra esta en camino!',
           'success'
         )
+        carrito.vaciarCarrito();
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
+          'No confirmada',
+          'Aun tenes los productos en el carrito :)',
+          'warning'
         )
       }
     })
@@ -299,5 +300,5 @@ class Producto {
     //   showConfirmButton: "true",
             
     // })
-    carrito.vaciarCarrito();
+    
   })
