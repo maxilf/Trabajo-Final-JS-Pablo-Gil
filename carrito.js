@@ -235,6 +235,21 @@ class Producto {
         const producto = bd.registroPorId(idProducto);
         // Llama al método agregar del carrito
         carrito.agregar(producto);
+        //Toastify
+        Toastify({
+          text: `Agregaste una unidad de ${producto.nombre}`,
+          duration: 3000,
+          destination: "https://github.com/apvarun/toastify-js",
+          newWindow: true,
+          close: true,
+          gravity: "bottom", // `top` or `bottom`
+          position: "center", // `left`, `center` or `right`
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "linear-gradient(to right, #e2b042, gray)",
+          },
+          onClick: function(){} // Callback after click
+        }).showToast();
       });
     }
   }
@@ -282,7 +297,7 @@ class Producto {
         )
         carrito.vaciarCarrito();
       } else if (
-        /* Read more about handling dismissals below */
+        //Sino confirma, aun tiene los productos en el carrito
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
@@ -293,12 +308,5 @@ class Producto {
       }
     })
 
-    // Swal.fire({
-    //   position: 'center',
-    //   icon: 'success',
-    //   title: 'Su compra ha sido realizada exitosamente!',
-    //   showConfirmButton: "true",
-            
-    // })
-    
+   
   })
