@@ -25,7 +25,6 @@ class Producto {
     async cargarRegistros(){
       const resultado = await fetch("productos.json");
       this.productos = await resultado.json();
-      console.log(this.productos);
       cargarProductos(this.productos);
     }
   
@@ -33,7 +32,7 @@ class Producto {
     traerRegistros() {
       return this.productos;
     }
-  
+      
     // Nos devuelve un producto según el ID
     registroPorId(id) {
       return this.productos.find((producto) => producto.id === id);
@@ -59,9 +58,9 @@ class Producto {
       const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
       // Array donde van a estar almacenados todos los productos del carrito
       this.carrito = carritoStorage || [];
-      this.total = 0; // Suma total de los precios de todos los productos
-      this.cantidadProductos = 0; // La cantidad de productos que tenemos en el carrito
-      // Llamo a listar apenas de instancia el carrito para aplicar lo que
+      this.total = 0; // Total de pesos en el carrito,sumando todos los productos
+      this.cantidadProductos = 0; // Unidades que tenemos en el carrito
+      // Llamo a listar apenas se instancia el carrito para aplicar lo que
       // hay en el storage (en caso de que haya algo)
       this.listar();
     }
@@ -74,9 +73,9 @@ class Producto {
     // Agregar al carrito
     agregar(producto) {
       const productoEnCarrito = this.estaEnCarrito(producto);
-      // Si no está en el carrito, le mando eun push y le agrego
-      // la propiedad "cantidad"
+      // Si no está en el carrito, le mando con push y le agrego la propiedad "cantidad"
       if (!productoEnCarrito) {
+        //Con spread le agrego la propiedad cantidad
         this.carrito.push({ ...producto, cantidad: 1 });
       } else {
         // De lo contrario, si ya está en el carrito, le sumo en 1 la cantidad
@@ -86,14 +85,13 @@ class Producto {
       }
       // Actualizo el storage
       localStorage.setItem("carrito", JSON.stringify(this.carrito));
-      // Muestro los productos en el HTML
+      // Actualizo y muestro como queda el carrito en el HTML
       this.listar();
     }
   
-    // Quitar del carrito
+    // QUITAR
     quitar(id) {
-      // Obento el índice de un producto según el ID, porque el
-      // método splice requiere el índice
+      //Consigo el indice del producto a quitar
       const indice = this.carrito.findIndex((producto) => producto.id === id);
       // Si la cantidad es mayor a 1, le resto la cantidad en 1
       if (this.carrito[indice].cantidad > 1) {
@@ -104,8 +102,16 @@ class Producto {
       }
       // Actualizo el storage
       localStorage.setItem("carrito", JSON.stringify(this.carrito));
-      // Muestro los productos en el HTML
+      // Actualizo y muestro como queda el carrito en el HTML
       this.listar();
+    }
+
+    vaciarCarrito(){
+      this.total = 0;
+      this.cantidadProductos = 0;
+      this.carrito = [];
+      localStorage.setItem("carrito", JSON.stringify(this.carrito));
+      this.listar()
     }
   
     // Renderiza todos los productos en el HTML
@@ -138,30 +144,28 @@ class Producto {
         botonComprar.style.display = "none";
       }
       
-      // Como no se cuantos productos tengo en el carrito, debo
-      // asignarle los eventos de forma dinámica a cada uno
-      // Primero hago una lista de todos los botones con .querySelectorAll
-      const botonesQuitar = document.querySelectorAll(".btnQuitar");
-      // Después los recorro uno por uno y les asigno el evento a cada uno
-      for (const boton of botonesQuitar) {
-        boton.addEventListener("click", (event) => {
-          event.preventDefault();
-          // Obtengo el id por el dataset (está asignado en this.listar())
-          const idProducto = Number(boton.dataset.id);
-          // Llamo al método quitar pasándole el ID del producto
-          this.quitar(idProducto);
-        });
-      }
-
-      // Actualizo los contadores del HTML
-      spanCantidadProductos.innerText = this.cantidadProductos;
-      spanTotalCarrito.innerText = this.total;
+    // Como no se cuantos productos tengo en el carrito, debo
+    // asignarle los eventos de forma dinámica a cada uno
+    // Primero hago una lista de todos los botones con .querySelectorAll
+    const botonesQuitar = document.querySelectorAll(".btnQuitar");
+    // Después los recorro uno por uno y les asigno el evento a cada uno
+    for (const boton of botonesQuitar) {
+      boton.addEventListener("click", (event) => {
+        event.preventDefault();
+        // Obtengo el id por el dataset (está asignado en this.listar())
+        const idProducto = Number(boton.dataset.id);
+        // Llamo al método quitar pasándole el ID del producto
+        this.quitar(idProducto);
+      });
     }
+
+    // Actualizo los contadores del HTML
+    spanCantidadProductos.innerText = this.cantidadProductos;
+    spanTotalCarrito.innerText = this.total;
+    }
+    
   }
-  
-  // Instanciamos la base de datos
-  const bd = new BaseDeDatos();
-  
+     
   // Elementos
   const spanCantidadProductos = document.querySelector("#cantidadProductos");
   const spanTotalCarrito = document.querySelector("#totalCarrito");
@@ -170,8 +174,11 @@ class Producto {
   const inputBuscar = document.querySelector("#inputBuscar");
   const botonCarrito = document.querySelector("section h1");
   const botonComprar = document.querySelector("#botonComprar");
-  const botonesCategorias = document.querySelectorAll(".categoria");
+  const botonesCategorias = document.querySelectorAll(".categorias");
   
+  // Instanciamos la base de datos
+  const bd = new BaseDeDatos();
+
   // Instaciamos la clase Carrito
   const carrito = new Carrito();
 
@@ -244,3 +251,53 @@ class Producto {
   botonCarrito.addEventListener("click", (event) => {
     document.querySelector("section").classList.toggle("ocultar");
   });
+
+  //Libreria aplicada al boton Comprar
+  botonComprar.addEventListener("click", (event)=>{
+    event.preventDefault();
+    //Primer alert para confirmar compra
+        
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: '¿Desea confirmar la compra?',
+      text: "Mira que no hay vuelta atras!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'No confirmar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Confirmada!',
+          'Su compra esta en camino!.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+
+    // Swal.fire({
+    //   position: 'center',
+    //   icon: 'success',
+    //   title: 'Su compra ha sido realizada exitosamente!',
+    //   showConfirmButton: "true",
+            
+    // })
+    carrito.vaciarCarrito();
+  })

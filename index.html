@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="stylo.css" />
   </head>
   <header>
@@ -20,13 +24,13 @@
   <body>
     <!-- Productos -->
     <main>
-        
         <input id="inputBuscar" type="text" placeholder="Buscar productos..." />
         <ul>
-          <li class="boton categorias" data-categorias="Granos">Granos</li>
-          <li class="boton categorias" data-categorias="Pastas">Pastas</li>
-          <li class="boton categorias" data-categorias="Frutos secos">Frutos secos</li>
-          <li class="boton categorias seleccionado" data-categorias="Todos">Todos</li>
+          <li class="boton categorias seleccionado" data-categoria="Todos">Todos</li>
+          <li class="boton categorias" data-categoria="Granos">Cereal</li>
+          <li class="boton categorias" data-categoria="Pastas">Pastas</li>
+          <li class="boton categorias" data-categoria="Frutos secos">Frutos secos</li>
+          <li class="boton categorias" data-categoria="Otros">Otros</li>
         </ul>
         <div id="productos">
         <!-- Acá van a ir todos los productos cargados en la base de datos (catálogo) -->
@@ -46,6 +50,12 @@
       <h2>Total: $<span id="totalCarrito">0</span></h2>
       <a href="#" id="botonComprar" class="boton" style="width: 100%; text-align: center">Comprar</a>
     </section>
+    <!-- Toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="carrito.js"></script>
   </body>
 </html>

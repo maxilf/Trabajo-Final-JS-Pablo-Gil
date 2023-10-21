@@ -3,8 +3,8 @@
     "id": 1,
     "nombre": "Avena",
     "precio": 1090,
-    "categoria": "Granos",
-    "imagen": "almendra-con-chocolate.jpg",
+    "categoria": "Cereal",
+    "imagen": "avena.jpg",
     "stock": 5
     },
     {
@@ -12,14 +12,14 @@
     "nombre": "Almendra con chocolate",
     "precio": 1250,
     "categoria": "Frutos secos",
-    "imagen": "almendra.jpg",
+    "imagen": "almendra-con-chocolate.jpg",
     "stock": 5
     },
     {
     "id": 3,
     "nombre": "Barrita proteica",
     "precio": 680,
-    "categoria": "Granos",
+    "categoria": "Otros",
     "imagen": "barrita-proteica.jpg",
     "stock": 5
     },
@@ -35,7 +35,7 @@
     "id": 5,
     "nombre": "Mermelada La Tranquilina",
     "precio": 1350,
-    "categoria": "Granos",
+    "categoria": "Otros",
     "imagen": "la_tranquilina.webp",
     "stock": 5
     },       
@@ -51,7 +51,7 @@
     "id": 7,
     "nombre": "Pasta de mani",
     "precio": 1800,
-    "categoria": "Granos",
+    "categoria": "Otros",
     "imagen": "mani_king.webp",
     "stock": 5
     },           
